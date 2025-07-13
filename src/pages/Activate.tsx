@@ -37,15 +37,11 @@ const Activate = () => {
         description: "Your payment is being verified. You'll be notified once approved.",
       });
       
-      // For demo purposes, automatically approve and redirect
+      // For demo purposes, redirect to pending activation page
       setTimeout(() => {
-        toast({
-          title: "Account Activated!",
-          description: "Welcome to Hunger platform. Start referring now!",
-        });
         setIsSubmitting(false);
-        navigate("/dashboard");
-      }, 2000);
+        navigate("/pending-activation");
+      }, 1000);
     }, 1500);
   };
 
