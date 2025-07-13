@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 
 const Activate = () => {
-  const [transactionId, setTransactionId] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -18,10 +18,10 @@ const Activate = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!transactionId.trim()) {
+    if (!mobileNo.trim()) {
       toast({
-        title: "Transaction ID Required",
-        description: "Please enter your transaction ID to proceed.",
+        title: "Mobile Number Required",
+        description: "Please enter your mobile number to proceed.",
         variant: "destructive"
       });
       return;
@@ -105,8 +105,8 @@ const Activate = () => {
                   <li>Open your mobile money app</li>
                   <li>Send <span className="font-semibold text-primary">UGX 10,000</span> to:</li>
                   <li className="font-mono bg-muted px-2 py-1 rounded ml-4">0761863923</li>
-                  <li>Copy the transaction ID from the confirmation message</li>
-                  <li>Enter the transaction ID in the form</li>
+                  <li>Note your mobile number used for payment</li>
+                  <li>Enter your mobile number in the form</li>
                 </ol>
               </div>
 
@@ -126,25 +126,24 @@ const Activate = () => {
                 Confirm Payment
               </CardTitle>
               <CardDescription>
-                Enter your transaction details below
+                Enter your payment details below
               </CardDescription>
             </CardHeader>
             
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="transactionId">Transaction ID</Label>
+                  <Label htmlFor="mobileNo">Mobile No.</Label>
                   <Input
-                    id="transactionId"
-                    type="text"
-                    placeholder="Enter your transaction ID"
-                    value={transactionId}
-                    onChange={(e) => setTransactionId(e.target.value)}
+                    id="mobileNo"
+                    type="tel"
+                    placeholder="Enter your mobile number"
+                    value={mobileNo}
+                    onChange={(e) => setMobileNo(e.target.value)}
                     required
-                    className="font-mono"
                   />
                   <p className="text-xs text-muted-foreground">
-                    You can find this in your mobile money confirmation message
+                    Enter the mobile number used for payment
                   </p>
                 </div>
 
